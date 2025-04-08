@@ -3,14 +3,14 @@ import numpy as np # type: ignore
 import re
 from colorama import Fore, Back # type: ignore
 import matplotlib.pyplot as plt
-import matplotlib.animation as ama
-from tqdm.autonotebook import tqdm
+# import matplotlib.animation as ama
+# from tqdm.autonotebook import tqdm
 from itertools import combinations_with_replacement
 
 # =========================
 def MKdir(path, rm):
     if os.path.isdir(path) and rm:
-        os.rmdir(f"{path}")
+        os.system(f"rm -r {path}")
         os.mkdir(path)
     elif os.path.isdir(path) and not(rm):
         pass
@@ -132,6 +132,35 @@ class POSCARConvert():
                     f'{atom:^8}   {pos_x:<018}   {pos_y:<018}   {pos_z:<018}   {float(r):<018}    {float(theta):<018}     {float(phi):<018}\n'
                 ]
                 A_File.writelines(lines)
+
+    def BtoTF(self, repeatNum=1, vacLen=10):
+        
+        a_vec, b_vec, c_vec = self.a_vec, self.b_vec, self.c_vec
+        atom_array_dir = self.atom_array_dir
+        height = c_vec[-1]
+        Zscale = ((repeatNum)*height+vacLen)/height
+
+        self.new_a_vec = a_vec
+        self.new_b_vec = b_vec
+        self.new_c_vec = c_vec*(1, 1, Zscale)
+
+        new_atom_array_dir = atom_array_dir
+        for i in range(repeatNum):
+            shift_array = np.array([[0, 0, i], 
+                                    [0, 0, i],
+                                    [0, 0, i]])
+            shifted_array = atom_array_dir + shift_array
+            if i == 0:
+                pass
+            else:
+                new_atom_array_dir = np.append(new_atom_array_dir, shifted_array)
+                new_atom_array_dir = new_atom_array_dir.reshape(3*(i+1), 3)
+                # print(new_atom_array_dir)
+
+        new_atom_array_dir = new_atom_array_dir*np.array([[1, 1, 1/Zscale]]*(3*repeatNum))
+        shift = 0.5-np.mean(new_atom_array_dir[:,2])
+        self.new_atom_array_dir = new_atom_array_dir + np.array([[0, 0, shift]]*(3*repeatNum))
+
 # ----------
     def Rotate_deg(self, deg, Print):
         a_vec, b_vec, c_vec = self.a_vec, self.b_vec, self.c_vec
@@ -253,8 +282,6 @@ class POSCARConvert():
 
     def WritePOSCAR(self, POSCARname , 
                     new_atom_type, 
-                    # new_atom_st, 
-                    # new_atom_num_st
                     ):
         
         new_atom_st = re.sub(u'([^\u0041-\u007a])', ' ', new_atom_type)
@@ -321,34 +348,34 @@ def ColorList(p=False):
 
     return color
 
-def MakeAma2D(datax, datay, fps=30):
-    fig, ax = plt.subplots()
+# def MakeAma2D(datax, datay, fps=30):
+#     fig, ax = plt.subplots()
     
-    if len(datax) == len(datay):
-        n = len(datax)
-    else:
-        print("datax and datay must be same size")
-        os._exit()
+#     if len(datax) == len(datay):
+#         n = len(datax)
+#     else:
+#         print("datax and datay must be same size")
+#         os._exit()
 
-    x, y = [], []
-    line, = ax.plot(x, y)
+#     x, y = [], []
+#     line, = ax.plot(x, y)
 
-    ax.set_xlim(np.min(datax)*(1+1/10), np.max(datax)*(1+1/10))
-    ax.set_ylim(np.min(datay)*(1+1/10), np.max(datay)*(1+1/10))
+#     ax.set_xlim(np.min(datax)*(1+1/10), np.max(datax)*(1+1/10))
+#     ax.set_ylim(np.min(datay)*(1+1/10), np.max(datay)*(1+1/10))
 
-    def run(fram_ind):
-        x.append(datax[fram_ind])
-        y.append(datay[fram_ind])
-        line.set_data(x, y)
+#     def run(fram_ind):
+#         x.append(datax[fram_ind])
+#         y.append(datay[fram_ind])
+#         line.set_data(x, y)
 
-    bar = tqdm(total=n)
+#     bar = tqdm(total=n)
 
 
-    ani = ama.FuncAnimation(fig, run, frames=n, interval=fps)
-    ani.save('animation.gif', fps=fps,
-             progress_callback=lambda i, n:bar.update(1))
-    bar.close()
-    plt.show()
+#     ani = ama.FuncAnimation(fig, run, frames=n, interval=fps)
+#     ani.save('animation.gif', fps=fps,
+#              progress_callback=lambda i, n:bar.update(1))
+#     bar.close()
+#     plt.show()
 
 def Sum_Combination(n, Ntot):
     combinations = []
