@@ -1,0 +1,873 @@
+[INFO] 2025-03-25 20:48:33 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData
+[INFO] 2025-03-25 20:48:53 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData_Lise_band_novdw_soc_fermisurface_boun0.4
+[INFO] 2025-03-25 20:49:09 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 20:49:15 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 20:49:15 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 20:49:30 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 20:52:55 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 20:53:02 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 20:53:02 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 20:53:16 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:12:02 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:12:09 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:12:09 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:12:24 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:13:52 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:13:58 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:13:58 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:14:13 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:28:46 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:28:52 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:28:52 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:29:07 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:31:05 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:31:11 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:31:11 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:31:26 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:32:10 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:32:16 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:32:16 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:32:31 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:34:54 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:35:00 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:35:00 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:35:15 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:37:29 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:37:35 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:37:35 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:37:50 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:41:13 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:41:19 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:41:19 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:41:34 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:42:52 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:42:58 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:42:58 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:43:13 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:44:12 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:44:18 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:44:18 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:44:33 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:53:42 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:53:48 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:53:48 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:54:03 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 21:58:40 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 21:58:45 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 21:58:45 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 21:59:00 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:02:22 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:02:28 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:02:28 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:02:43 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:03:16 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:03:22 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:03:22 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:03:42 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:03:48 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:03:48 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:04:03 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:05:14 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:05:20 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:05:20 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:05:35 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:07:16 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:07:22 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:07:22 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:07:37 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:09:51 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:09:57 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:09:57 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:10:12 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:13:00 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:13:07 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:13:07 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:13:21 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:15:19 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:15:25 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:15:25 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:15:40 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:16:12 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:16:18 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:16:18 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:16:32 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-25 22:17:55 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-25 22:18:01 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-25 22:18:01 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\a5511\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-25 22:18:16 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-26 18:46:48 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-26 18:46:56 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\functools.py", line 998, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-26 18:46:56 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-26 18:47:20 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object
+[INFO] 2025-03-26 18:48:57 - pyprocar.io.parser[246][parse_vasp] - Parsing VASP files in testingData/1_Lise_band_novdw_soc_fermisurface_boun0.4
+[ERROR] 2025-03-26 18:49:05 - pyprocar.io.parser[262][parse_vasp] - Error parsing poscar file 
+cannot access local variable 'end_table' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\parser.py", line 260, in parse_vasp
+    poscar = vasp.Poscar(poscar,rotations = outcar.rotations)
+                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\functools.py", line 998, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\vasp.py", line 163, in rotations
+    operators = np.zeros((end_table-begin_table, 9))
+                          ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'end_table' where it is not associated with a value
+[ERROR] 2025-03-26 18:49:05 - pyprocar.io.parser[269][parse_vasp] - Error parsing kpoints file 
+'Kpoints' object has no attribute 'kpath'
+Traceback (most recent call last):
+  File "C:\Users\tangtang\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyprocar\io\parser.py", line 267, in parse_vasp
+    self.kpath = kpoints.kpath
+                 ^^^^^^^^^^^^^
+AttributeError: 'Kpoints' object has no attribute 'kpath'
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[81][__init__] - Initializing the ElectronicBandStructure object
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[144][__init__] - Subtracting Fermi Energy from Bands
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[145][__init__] - Is Mesh: True
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[146][__init__] - Fermi Energy: 0.9931
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[147][__init__] - Kpoints shape: (625, 3)
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[148][__init__] - Bands shape: (625, 76, 1)
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[150][__init__] - Projected shape: (625, 76, 10, 1, 9, 4)
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[156][__init__] - Kpath: ['s', 'py', 'pz', 'px', 'dxy', 'dyz', 'dz2', 'dxz', 'x2-y2']
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[158][__init__] - Reciprocal lattice: 
+[[ 0.145  -0.2511  0.    ]
+ [ 0.145   0.2511 -0.    ]
+ [ 0.     -0.      0.025 ]]
+[INFO] 2025-03-26 18:49:26 - pyprocar.core.ebs[161][__init__] - Initialized the ElectronicBandStructure object

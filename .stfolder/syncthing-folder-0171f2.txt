@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: kixt5-a5ods
+created: 2025-03-18T21:22:53+08:00
