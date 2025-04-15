@@ -229,10 +229,7 @@ class MultiR_TB_Plot():
         for case in data_caseList[::-1]:
             for subcase in case:
                 x = [xpos for _ in range(len(subcase))]
-                # ax.scatter(x, subcase/scale, marker='*',
-                #             c='k',
-                #             alpha=0.5
-                #             )
+
                 ax.errorbar(xpos, np.mean(subcase)/scale,
                             fmt='o', color=color[0],
                             yerr=np.std(subcase)/scale,
@@ -263,7 +260,7 @@ class MultiR_TB_Plot():
         
         # ==========
 
-        plt.figure(figsize=(8, 4))
+        plt.figure(figsize=(8, 6))
         plt.rcParams['ytick.direction']='in'
         ax = plt.subplot(111)
 
