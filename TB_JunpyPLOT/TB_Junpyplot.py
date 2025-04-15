@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from STT_Tool import Tools
 color = Tools.ColorList()
 
-class TB_Plot():
+class SingleR_TB_Plot():
     def __init__(self, DataPath:str, Rtot:int):
         
         with open(f"{DataPath}") as R_File:
@@ -155,5 +155,7 @@ class TB_Plot():
         else:
             plt.show()
 
-
+class MultiR_TB_Plot():
+    def __init__(self, DataPath):
+        DataPath_List = []
     
