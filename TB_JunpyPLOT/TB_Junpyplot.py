@@ -179,6 +179,7 @@ class MultiR_TB_Plot():
         
         self.targetPath = targetPath
         self.Rtot       = Rtot
+        print(targetPath)
     
     def Tool_BoundarySet(self, data, Bound:tuple):
         maximum = Bound[0]
@@ -193,8 +194,7 @@ class MultiR_TB_Plot():
         else:
             pass
 
-        return maximum, minimum    
-        
+        return maximum, minimum       
 
     def Tool_LoadData(self, DataPath):
         
@@ -217,26 +217,36 @@ class MultiR_TB_Plot():
         
         return data_caseList, data_RList
 
-    def Tool_casePlot(self, ax, case_data, color, scale=1e6, maxminBound=(-1e10, 1e10)):
+    def Tool_casePlot(self, ax, case_data, 
+                      color, label=False,
+                      scale=1e6, maxminBound=(-1e10, 1e10)):
         
         data_caseList = case_data
+        targetPath = self.targetPath
         maximum = maxminBound[0]
         minimum = maxminBound[1]
 
         xpos = 0
         x_xpos = -0.5
         xpos_list = []
-        for case in data_caseList[::-1]:
+        for k, case in enumerate(data_caseList[::-1]):
             for subcase in case:
                 x = [xpos for _ in range(len(subcase))]
-
-                ax.errorbar(xpos, np.mean(subcase)/scale,
-                            fmt='o', color=color[0],
-                            yerr=np.std(subcase)/scale,
-                            ecolor=color[1],
-                            capsize=4, elinewidth=2,
-                            # label=label
-                            )
+                if label and k==0:
+                    ax.errorbar(xpos, np.mean(subcase)/scale,
+                                fmt='o', color=color[0],
+                                yerr=np.std(subcase)/scale,
+                                ecolor=color[1],
+                                capsize=4, elinewidth=2,
+                                label=label
+                                )
+                else:
+                    ax.errorbar(xpos, np.mean(subcase)/scale,
+                                fmt='o', color=color[0],
+                                yerr=np.std(subcase)/scale,
+                                ecolor=color[1],
+                                capsize=4, elinewidth=2,
+                                )
                 xpos = xpos+1
 
                 maximum, minimum = self.Tool_BoundarySet(data=subcase, Bound=(maximum, minimum))
@@ -266,9 +276,10 @@ class MultiR_TB_Plot():
 
         for i, datapath in enumerate(targetPath):
             data_caseList, data_RList = self.Tool_LoadData(DataPath=f"Temperature_Rparse/{datapath}")
+
             maximum, minimum, xpos, xpos_list = self.Tool_casePlot(ax, data_caseList, 
                                                                    color=(color[i], color[i]), 
-                                                                #    label=f"{targetPath[:5]}",
+                                                                   label=f"{targetPath[i][:-4]}",
                                                                    scale=1e6, 
                                                                    maxminBound=(maximum, minimum)
                                                                    )
@@ -283,7 +294,7 @@ class MultiR_TB_Plot():
             )
         plt.ylabel("Resistance (MΩ)")
         plt.grid("--", axis='y')
-        # plt.legend(loc='best')
+        plt.legend(loc='best')
 
         if p:
             plt.savefig("Rcase_Result.png")
