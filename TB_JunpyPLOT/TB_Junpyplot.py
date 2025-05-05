@@ -1,7 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import itertools
 import os
+from scipy.optimize import curve_fit
 
+from STT_Tool import Tools as stt
 from STT_Tool import Tools
 color = Tools.ColorList()
 
@@ -41,8 +44,41 @@ class SingleR_TB_Plot():
             pass
 
         return maximum, minimum    
+
+    def _NormalDisMask(self, stdNum=3):
+        def GaussionFit(x0, y0, fitt):
+            def fit_function(x, A, mu, sigma):
+                factor = 1/np.sqrt(2*np.pi*sigma**2)
+                main   = np.e**(-((x-mu)**2)/2*sigma**2)
+                return A*factor*main
+            popt, pcov = curve_fit(fit_function, x0, y0, p0=fitt)
+            new_x = np.linspace(np.min(x0), np.max(x0), 1000)
+            new_y = fit_function(new_x, *popt)
+            # print("A={}, mu={}, sigma={}".format(*popt))
+            return new_x, new_y, popt
         
-    def casePlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), p=False):
+        Ntot = self.Rtot
+        Ntot_Num_array = np.array([])
+        for NLL in range(1, Ntot+1, 1):
+            NL_set  = stt.Sum_Combination(NLL, Ntot)
+            totNum = 0
+            for NL in NL_set:
+                sub_NL_set = list(set(itertools.permutations(NL)))
+                totNum = totNum+len(sub_NL_set)
+            Ntot_Num = np.array([NLL, totNum])
+            Ntot_Num_array = np.append(Ntot_Num_array, Ntot_Num)
+        Ntot_Num_array = Ntot_Num_array.reshape(Ntot, 2)
+        # print(Ntot_Num_array)
+        #  ----------
+        x0 = Ntot_Num_array[:,0]
+        y0 = Ntot_Num_array[:,1]/np.max(Ntot_Num_array[:,1])
+        new_x, new_y, popt = GaussionFit(x0, y0, fitt=(2, 7, 0.5))
+        INstdpos = np.where(np.logical_and(
+                            x0<=popt[1]+stdNum*popt[2], x0>=popt[1]-stdNum*popt[2])
+                            )
+        return INstdpos[0]
+
+    def casePlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), Gaussian=False, p=False):
         
         maximum = maxminBound[0]
         minimum = maxminBound[1]
@@ -51,6 +87,8 @@ class SingleR_TB_Plot():
         data_caseList = self.data_caseList
         Rtot          = self.Rtot
         
+        INstdpos = self._NormalDisMask()
+        print("These number of R are in the Gaussian Distribution: " + str((INstdpos+1)[::-1]))
         # ==========
 
         plt.figure(figsize=(8, 4))
@@ -59,19 +97,35 @@ class SingleR_TB_Plot():
         xpos = 0
         x_xpos = -0.5
         xpos_list = []
-        for case in data_caseList[::-1]:
+        for i, case in enumerate(data_caseList[::-1]):
             for subcase in case:
                 x = [xpos for _ in range(len(subcase))]
-                plt.scatter(x, subcase/scale, marker='*',
-                            c='k',
-                            alpha=0.5
-                            )
-                plt.errorbar(xpos, np.mean(subcase)/scale,
-                            fmt='o', color="blue",
-                            yerr=np.std(subcase)/scale,
-                            ecolor='red',
-                            capsize=4, elinewidth=2
-                            )
+                if Gaussian:
+                    if i in INstdpos:
+                        plt.scatter(x, subcase/scale, marker='*',
+                                    c='k',
+                                    alpha=0.5
+                                    )
+                        plt.errorbar(xpos, np.mean(subcase)/scale,
+                                    fmt='o', color="blue",
+                                    yerr=np.std(subcase)/scale,
+                                    ecolor='red',
+                                    capsize=4, elinewidth=2
+                                    )
+                    else:
+                        pass
+                else:
+                    plt.scatter(x, subcase/scale, marker='*',
+                                c='k',
+                                alpha=0.5
+                                )
+                    plt.errorbar(xpos, np.mean(subcase)/scale,
+                                fmt='o', color="blue",
+                                yerr=np.std(subcase)/scale,
+                                ecolor='red',
+                                capsize=4, elinewidth=2
+                                )
+
                 xpos = xpos+1
 
                 maximum, minimum = self._BoundarySet(data=subcase, Bound=(maximum, minimum))
@@ -107,7 +161,7 @@ class SingleR_TB_Plot():
         # =====
         return LABELoutput, RESULToutput
 
-    def RPlot(self, p=False):
+    def RPlot(self, Gaussian=False, p=False):
         
         maximum = self.maxminBound[0]
         minimum = self.maxminBound[1]
@@ -116,24 +170,41 @@ class SingleR_TB_Plot():
         data_RList = self.data_RList
         Rtot       = self.Rtot
         
+        INstdpos = self._NormalDisMask()
         # ==========
 
         plt.figure()
         plt.rcParams['ytick.direction']='in'
         xpos=0
         xpos_list = []
-        for subR in data_RList[::-1]:
+        for i, subR in enumerate(data_RList[::-1]):
             x = [xpos for _ in range(len(subR))]
-            plt.scatter(x, np.array(subR)/scale, marker='*', 
-                        c='k', 
-                        alpha=0.5
-                        )
-            plt.errorbar(xpos, np.mean(subR)/scale,
-                            fmt='o', color="blue",
-                            yerr=np.std(subR)/scale,
-                            ecolor='red',
-                            capsize=4, elinewidth=2
+            if Gaussian:
+                if i in INstdpos:
+                    plt.scatter(x, np.array(subR)/scale, marker='*', 
+                                c='k', 
+                                alpha=0.5
+                                )
+                    plt.errorbar(xpos, np.mean(subR)/scale,
+                                    fmt='o', color="blue",
+                                    yerr=np.std(subR)/scale,
+                                    ecolor='red',
+                                    capsize=4, elinewidth=2
+                                    )
+                else:
+                    pass
+            else:
+                plt.scatter(x, np.array(subR)/scale, marker='*', 
+                            c='k', 
+                            alpha=0.5
                             )
+                plt.errorbar(xpos, np.mean(subR)/scale,
+                                fmt='o', color="blue",
+                                yerr=np.std(subR)/scale,
+                                ecolor='red',
+                                capsize=4, elinewidth=2
+                                )
+
             xpos_list.append(xpos)
             xpos = xpos+1
             maximum, minimum = self._BoundarySet(data=subR, Bound=(maximum, minimum))
@@ -149,9 +220,10 @@ class SingleR_TB_Plot():
             )
 
         xlabel = [f"R{i}" for i in range(Rtot, 0, -1)]
-        plt.xlim(-0.5, xpos-0.5)
         plt.xticks(ticks=xpos_list,
                 labels=xlabel)
+        # plt.xlim(xpos_list[np.min(INstdpos)]-0.5, xpos_list[np.max(INstdpos)]-0.5)
+        plt.xlim(-0.5, xpos-0.5)
 
         plt.ylabel("Resistance (MΩ)")
 
@@ -181,7 +253,7 @@ class MultiR_TB_Plot():
         self.Rtot       = Rtot
         print(targetPath)
     
-    def Tool_BoundarySet(self, data, Bound:tuple):
+    def _BoundarySet(self, data, Bound:tuple):
         maximum = Bound[0]
         minimum = Bound[1]
         
@@ -196,7 +268,40 @@ class MultiR_TB_Plot():
 
         return maximum, minimum       
 
-    def Tool_LoadData(self, DataPath):
+    def _NormalDisMask(self, stdNum=3):
+        def GaussionFit(x0, y0, fitt):
+            def fit_function(x, A, mu, sigma):
+                factor = 1/np.sqrt(2*np.pi*sigma**2)
+                main   = np.e**(-((x-mu)**2)/2*sigma**2)
+                return A*factor*main
+            popt, pcov = curve_fit(fit_function, x0, y0, p0=fitt)
+            new_x = np.linspace(np.min(x0), np.max(x0), 1000)
+            new_y = fit_function(new_x, *popt)
+            print("A={}, mu={}, sigma={}".format(*popt))
+            return new_x, new_y, popt
+        
+        Ntot = self.Rtot
+        Ntot_Num_array = np.array([])
+        for NLL in range(1, Ntot+1, 1):
+            NL_set  = stt.Sum_Combination(NLL, Ntot)
+            totNum = 0
+            for NL in NL_set:
+                sub_NL_set = list(set(itertools.permutations(NL)))
+                totNum = totNum+len(sub_NL_set)
+            Ntot_Num = np.array([NLL, totNum])
+            Ntot_Num_array = np.append(Ntot_Num_array, Ntot_Num)
+        Ntot_Num_array = Ntot_Num_array.reshape(Ntot, 2)
+        # print(Ntot_Num_array)
+        #  ----------
+        x0 = Ntot_Num_array[:,0]
+        y0 = Ntot_Num_array[:,1]/np.max(Ntot_Num_array[:,1])
+        new_x, new_y, popt = GaussionFit(x0, y0, fitt=(2, 7, 0.5))
+        INstdpos = np.where(np.logical_and(
+                            x0<=popt[1]+stdNum*popt[2], x0>=popt[1]-stdNum*popt[2])
+                            )
+        return INstdpos
+
+    def _LoadData(self, DataPath):
         
         Rtot = self.Rtot
 
@@ -217,7 +322,7 @@ class MultiR_TB_Plot():
         
         return data_caseList, data_RList
 
-    def Tool_casePlot(self, ax, case_data, 
+    def _casePlot(self, ax, case_data, 
                       color, label=False,
                       scale=1e6, maxminBound=(-1e10, 1e10)):
         
@@ -249,7 +354,7 @@ class MultiR_TB_Plot():
                                 )
                 xpos = xpos+1
 
-                maximum, minimum = self.Tool_BoundarySet(data=subcase, Bound=(maximum, minimum))
+                maximum, minimum = self._BoundarySet(data=subcase, Bound=(maximum, minimum))
             
             xpos_list.append((x_xpos+(xpos-0.5))/2)
             ax.vlines(x=xpos-0.5, 
@@ -275,14 +380,14 @@ class MultiR_TB_Plot():
         ax = plt.subplot(111)
 
         for i, datapath in enumerate(targetPath):
-            data_caseList, data_RList = self.Tool_LoadData(DataPath=f"Temperature_Rparse/{datapath}")
+            data_caseList, data_RList = self._LoadData(DataPath=f"Temperature_Rparse/{datapath}")
 
-            maximum, minimum, xpos, xpos_list = self.Tool_casePlot(ax, data_caseList, 
-                                                                   color=(color[i], color[i]), 
-                                                                   label=f"{targetPath[i][:-4]}",
-                                                                   scale=1e6, 
-                                                                   maxminBound=(maximum, minimum)
-                                                                   )
+            maximum, minimum, xpos, xpos_list = self._casePlot(ax, data_caseList, 
+                                                            color=(color[i], color[i]), 
+                                                            label=f"{targetPath[i][:-4]}",
+                                                            scale=rescale, 
+                                                            maxminBound=(maximum, minimum)
+                                                            )
     
         xlabel = [f"R{i}" for i in range(Rtot, 0, -1)]
         plt.xlim(-0.5, xpos-0.5)
@@ -297,7 +402,9 @@ class MultiR_TB_Plot():
         plt.legend(loc='best')
 
         if p:
-            plt.savefig("Rcase_Result.png")
+            plt.savefig("Rcase_Result.png", 
+                        # transparent=True
+                        )
         else:
             plt.show()
 
