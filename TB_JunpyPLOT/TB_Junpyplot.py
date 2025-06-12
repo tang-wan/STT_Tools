@@ -10,7 +10,14 @@ color = Tools.ColorList()
 
 class SingleR_TB_Plot():
     def __init__(self, DataPath:str, Rtot:int):
+
+        self.DataPath = DataPath
+        self.Rtot = Rtot
+
+    def _LoadData(self, DataPath):
         
+        Rtot = self.Rtot
+
         with open(f"{DataPath}") as R_File:
             data = R_File.readlines()
 
@@ -25,10 +32,11 @@ class SingleR_TB_Plot():
                 data_RList[Rgroup].append(float(i))
 
             data_caseList[Rgroup].append(np.float64(case[1:]))
-        
+
         self.data_caseList = data_caseList
         self.data_RList    = data_RList
-        self.Rtot          = Rtot
+
+        return data_caseList, data_RList
 
     def _BoundarySet(self, data, Bound:tuple):
         maximum = Bound[0]
@@ -56,7 +64,7 @@ class SingleR_TB_Plot():
             new_y = fit_function(new_x, *popt)
             # print("A={}, mu={}, sigma={}".format(*popt))
             return new_x, new_y, popt
-        
+ 
         Ntot = self.Rtot
         Ntot_Num_array = np.array([])
         for NLL in range(1, Ntot+1, 1):
@@ -84,7 +92,7 @@ class SingleR_TB_Plot():
         minimum = maxminBound[1]
         scale   = rescale
 
-        data_caseList = self.data_caseList
+        data_caseList, data_RList = self._LoadData(self.DataPath)
         Rtot          = self.Rtot
         
         INstdpos = self._NormalDisMask()
@@ -149,7 +157,9 @@ class SingleR_TB_Plot():
         plt.grid("--", axis='y')
 
         if p:
-            plt.savefig("Rcase_Result.png")
+            plt.savefig("case_Result.png",
+                        transparent=True
+                        )
         else:
             plt.show()
         # =====
@@ -167,7 +177,7 @@ class SingleR_TB_Plot():
         minimum = self.maxminBound[1]
         scale   = self.rescale
 
-        data_RList = self.data_RList
+        data_caseList, data_RList = self._LoadData(self.DataPath)
         Rtot       = self.Rtot
         
         INstdpos = self._NormalDisMask()
@@ -228,10 +238,11 @@ class SingleR_TB_Plot():
         plt.ylabel("Resistance (MΩ)")
 
         plt.grid("--", axis='y')
-        plt.show()
 
         if p:
-            plt.savefig("Rcase_Result.png")
+            plt.savefig("case_R_Result.png",
+                        transparent=True
+                        )
         else:
             plt.show()
         # =====
@@ -239,8 +250,8 @@ class SingleR_TB_Plot():
         RESULToutput = data_RList
         # =====
 
-class MultiR_TB_Plot():
-    def __init__(self, Rtot, DataPath="Temperature_Rparse"):
+class MultiR_TB_Plot_Angle():
+    def __init__(self, Rtot:int, DataPath="Temperature_Rparse"):
         
         path = os.listdir(f"{DataPath}")
 
@@ -249,6 +260,7 @@ class MultiR_TB_Plot():
             if p[-4:] == ".dat":
                 targetPath.append(p)
         
+        self.DataPath   = DataPath
         self.targetPath = targetPath
         self.Rtot       = Rtot
         print(targetPath)
@@ -327,7 +339,6 @@ class MultiR_TB_Plot():
                       scale=1e6, maxminBound=(-1e10, 1e10)):
         
         data_caseList = case_data
-        targetPath = self.targetPath
         maximum = maxminBound[0]
         minimum = maxminBound[1]
 
@@ -380,7 +391,7 @@ class MultiR_TB_Plot():
         ax = plt.subplot(111)
 
         for i, datapath in enumerate(targetPath):
-            data_caseList, data_RList = self._LoadData(DataPath=f"Temperature_Rparse/{datapath}")
+            data_caseList, data_RList = self._LoadData(DataPath=f"{self.DataPath}/{datapath}")
 
             maximum, minimum, xpos, xpos_list = self._casePlot(ax, data_caseList, 
                                                             color=(color[i], color[i]), 
@@ -402,14 +413,198 @@ class MultiR_TB_Plot():
         plt.legend(loc='best')
 
         if p:
-            plt.savefig("Rcase_Result.png", 
-                        # transparent=True
+            plt.savefig("diffAngle_Result.png", 
+                        transparent=True
                         )
         else:
             plt.show()
 
-
-
+class MultiR_TB_Plot_Rtot():
+    def __init__(self, RtotList:tuple, AngleSet=(90, 180, 90), DataPath="Temperature_Rparse"):
         
+        self.DataPath = DataPath
+        self.RtotList = RtotList
+        self.AngleSet = AngleSet
+
+    def _LoadData(self, Rtot, DataPath):
+
+        with open(f"{DataPath}") as R_File:
+            data = R_File.readlines()
+
+        data_caseList = [[] for _ in range(Rtot)]
+        data_RList = [[] for _ in range(Rtot)]
+        for case in data:
+            case = case.split()
+            del case[1]
+            Rgroup = int(case[0][1:])-1
+            
+            for i in case[1:]:
+                data_RList[Rgroup].append(float(i))
+
+            data_caseList[Rgroup].append(np.float64(case[1:]))
         
+        return data_caseList, data_RList
     
+    def _BoundarySet(self, data, Bound:tuple):
+        maximum = Bound[0]
+        minimum = Bound[1]
+        
+        if np.max(data)>maximum:
+            maximum = np.max(data)
+        else:
+            pass
+        if np.min(data)<minimum:
+            minimum = np.min(data)
+        else:
+            pass
+
+        return maximum, minimum       
+
+    def _RPlot(self, ax, R_data, start,
+                    color, label,
+                    scale=1e6, maxminBound=(-1e10, 1e10)):
+    
+        data_RList = R_data
+        maximum  = maxminBound[0]
+        minimum  = maxminBound[1]
+        scale    = scale
+        RtotList = self.RtotList
+
+        # =====
+
+        xpos = (0+start)
+        xpos_list = []
+        for i, subR in enumerate(data_RList[::-1]):
+            x = [(xpos+start) for _ in range(len(subR))]
+            if i==0:
+                plt.errorbar(xpos, np.mean(subR)/scale,
+                                fmt='o', color=color,
+                                yerr=np.std(subR)/scale,
+                                ecolor=color,
+                                capsize=4, elinewidth=2,
+                                label=label
+                                )
+            else:
+                plt.errorbar(xpos, np.mean(subR)/scale,
+                                fmt='o', color=color,
+                                yerr=np.std(subR)/scale,
+                                ecolor=color,
+                                capsize=4, elinewidth=2,
+                                )
+
+
+            xpos_list.append(xpos)
+            xpos = xpos+1
+        plt.legend(loc='best')
+
+        return maximum, minimum, xpos, xpos_list
+    
+    def _NormalDisMask(self, Ntot, stdNum=3):
+        def GaussionFit(x0, y0, fitt):
+            def fit_function(x, A, mu, sigma):
+                factor = 1/np.sqrt(2*np.pi*sigma**2)
+                main   = np.e**(-((x-mu)**2)/2*sigma**2)
+                return A*factor*main
+            popt, pcov = curve_fit(fit_function, x0, y0, p0=fitt)
+            new_x = np.linspace(np.min(x0), np.max(x0), 1000)
+            new_y = fit_function(new_x, *popt)
+            # print("A={}, mu={}, sigma={}".format(*popt))
+            return new_x, new_y, popt
+
+        Ntot_Num_array = np.array([])
+        for NLL in range(1, Ntot+1, 1):
+            NL_set  = stt.Sum_Combination(NLL, Ntot)
+            totNum = 0
+            for NL in NL_set:
+                sub_NL_set = list(set(itertools.permutations(NL)))
+                totNum = totNum+len(sub_NL_set)
+            Ntot_Num = np.array([NLL, totNum])
+            Ntot_Num_array = np.append(Ntot_Num_array, Ntot_Num)
+        Ntot_Num_array = Ntot_Num_array.reshape(Ntot, 2)
+        # print(Ntot_Num_array)
+        #  ----------
+        x0 = Ntot_Num_array[:,0]
+        y0 = Ntot_Num_array[:,1]/np.max(Ntot_Num_array[:,1])
+        new_x, new_y, popt = GaussionFit(x0, y0, fitt=(2, 7, 0.5))
+        INstdpos = np.where(np.logical_and(
+                            x0<=popt[1]+stdNum*popt[2], x0>=popt[1]-stdNum*popt[2])
+                            )
+        return INstdpos[0]
+
+    def RPlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), p=False):
+
+        maximum = maxminBound[0]
+        minimum = maxminBound[1]
+        scale   = rescale
+
+        RtotList = self.RtotList
+        AngleSet = self.AngleSet
+        DataPath = self.DataPath
+        
+        # ==========
+
+        plt.figure(figsize=(8, 6))
+        plt.rcParams['ytick.direction']='in'
+        ax = plt.subplot(111)
+        
+        for i, Rtot in enumerate(RtotList):
+            data_caseList, data_RList = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+
+            maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
+                                                              color=color[i], label=f"Rtot={Rtot}",
+                                                              scale=rescale, 
+                                                              maxminBound=(maximum, minimum)
+                                                              )
+            
+            if i==0:
+                xpos, xpos_list = xposR, xpos_listR
+            else:
+                pass
+            
+
+        xlabel = [f"R{i}" for i in range(np.max(RtotList), 0, -1)]
+        plt.xticks(ticks=xpos_list,
+                    labels=xlabel)
+
+        plt.xlim(-0.5, xpos-0.5)
+
+        plt.ylabel("Resistance (MΩ)")
+
+        plt.grid("--", axis='y')
+        plt.show()
+
+    def RtotPlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), p=False):
+        maximum = maxminBound[0]
+        minimum = maxminBound[1]
+        scale   = rescale
+
+        RtotList = self.RtotList
+        AngleSet = self.AngleSet
+        DataPath = self.DataPath
+        
+        # ==========
+
+        plt.figure(figsize=(8, 6))
+        plt.rcParams['ytick.direction']='in'
+        ax = plt.subplot(111)
+        
+        xlabel = []
+        for i, Rtot in enumerate(RtotList):
+            data_caseList, data_RList_sep = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+            data_RList = []
+            for data in data_RList_sep:
+                data_RList = data_RList+data
+            data_RList = [data_RList]
+            maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
+                                                              color=color[i], label=f"Rtot={Rtot}",
+                                                              scale=rescale, 
+                                                              maxminBound=(maximum, minimum)
+                                                              )
+            xlabel.append(f"{Rtot}Rtot")
+        xpos_list = np.linspace(0, len(xlabel)-1, len(xlabel))
+
+        plt.xticks(ticks=xpos_list,
+                    labels=xlabel)
+
+        plt.grid("--", axis='y')
+        plt.show()
