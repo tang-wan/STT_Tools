@@ -185,7 +185,7 @@ class TwoDomain():
         end   = FirstNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[0],color=arrowCol[0],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -195,7 +195,7 @@ class TwoDomain():
         end   = FirstNum + SecondNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[1],color=arrowCol[1],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -414,7 +414,7 @@ class ThreeDomain():
         end   = FirstNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[0],color=arrowCol[0],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -424,7 +424,7 @@ class ThreeDomain():
         end   = FirstNum + SecondNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[1],color=arrowCol[1],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -434,20 +434,20 @@ class ThreeDomain():
         end   = FirstNum + SecondNum + ThirdNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[2], color=arrowCol[2],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
                     linestyles='--')
         
-        ax2.set_ylabel("Magnetization (A/m)", fontsize=18)
+        ax2.set_ylabel("Magnetization (MA/m)", fontsize=22)
         
         ax2.set_xticks(ticks  = xtick[FirstIgnore:(FirstNum+SecondNum)], 
                        labels = label_list[FirstIgnore:(FirstNum+SecondNum)]
                     )
-        ax2.set_xlabel("Layer Number", fontsize=18)
-        ax2.tick_params(axis='both', labelsize=16)
-        ax2.legend(loc="best", fontsize=14)
+        # ax2.set_xlabel("Layer Number", fontsize=18)
+        ax2.tick_params(axis='both', labelsize=20)
+        ax2.legend(loc="best", fontsize=18)
         ax2.grid("--")
         
         # =========================
@@ -658,7 +658,7 @@ class FourDomain():
         end   = FirstNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[0],color=arrowCol[0],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -668,7 +668,7 @@ class FourDomain():
         end   = FirstNum + SecondNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[1],color=arrowCol[1],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -678,7 +678,7 @@ class FourDomain():
         end   = FirstNum + SecondNum + ThirdNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[2], color=arrowCol[2],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',
@@ -688,7 +688,7 @@ class FourDomain():
         end   = FirstNum + SecondNum + ThirdNum + FourNum
         ax2.scatter(xtick[start:end:], cutPoint[start:end:], 
                     label=label[2], color=arrowCol[2],
-                    s=80
+                    s=500
                     )
         ax2.vlines(x=end+0.5, ymin=-1.5, ymax=1.5, 
                     color='k',

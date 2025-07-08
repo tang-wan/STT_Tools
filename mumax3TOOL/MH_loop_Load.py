@@ -43,7 +43,7 @@ class DataLoad():
         dataDict = self.dataDict
         return dataDict
     
-    def AngleLoad(self, BextAxis='z', zeroAxis='z', 
+    def AngleLoad(self, BextAxis='z', zeroAxis='z', LoadDir='F',
                   CalParameter=['m', 'Region-m1', 'Region-m2']):
         
         dataDict = self.dataDict
@@ -59,12 +59,22 @@ class DataLoad():
             case _:
                 print("Wrong Input, plz check the BextAxis")
         
-        for i, Barray in enumerate(BextArray[:(len(BextArray)//2)+1]):
+        if LoadDir.upper()=='F':
+            start = 0
+            end   = (len(BextArray)//2)+1
+        elif LoadDir.upper()=='B':
+            start = (len(BextArray)//2)
+            end   = (len(BextArray))+1
+        else:
+            print("!! No This direction !!")
+        
+
+        for i, Barray in enumerate(BextArray[start:end]):
             Car_r_array  = np.array([])
             theta_array  = np.array([])
             phi_array    = np.array([])
             for Cal in CalParameter:
-                data = dataDict[Cal][i]
+                data = dataDict[Cal][start+i]
                 mx, my, mz = data
 
                 theta  = np.arctan((np.sqrt(mx**2+my**2))/mz)*180/np.pi
@@ -94,7 +104,7 @@ class DataLoad():
             BextDict[str(Barray[BextInd])] = {'Car_r': Car_r_array,
                                               'theta': theta_array, 
                                               'phi': phi_array}
-        
+            # print(theta_array)
         return BextDict
             
             

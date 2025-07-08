@@ -86,6 +86,18 @@ class SingleR_TB_Plot():
                             )
         return INstdpos[0]
 
+    def _LabelSet(self, rescale):
+        match rescale:
+            case 1e6:
+                plt.ylabel(r"Resistance (M$\Omega$)", fontsize=14)
+            
+            case 1e3:
+                plt.ylabel(r"Resistance (k$\Omega$)", fontsize=14)
+            case 1:
+                plt.ylabel(r"Resistance ($\Omega$)", fontsize=14)
+            case _:
+                plt.ylabel("NO Support This Rescale", fontsize=18)
+
     def casePlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), Gaussian=False, p=False):
         
         maximum = maxminBound[0]
@@ -153,7 +165,7 @@ class SingleR_TB_Plot():
         plt.ylim(
             (minimum-0.5*scale)/scale, (maximum+0.5*scale)/scale
             )
-        plt.ylabel("Resistance (MΩ)")
+        self._LabelSet(rescale=rescale)
         plt.grid("--", axis='y')
 
         if p:
@@ -187,15 +199,16 @@ class SingleR_TB_Plot():
         plt.rcParams['ytick.direction']='in'
         xpos=0
         xpos_list = []
+        ax = plt.subplot(111)
         for i, subR in enumerate(data_RList[::-1]):
             x = [xpos for _ in range(len(subR))]
             if Gaussian:
                 if i in INstdpos:
-                    plt.scatter(x, np.array(subR)/scale, marker='*', 
+                    ax.scatter(x, np.array(subR)/scale, marker='*', 
                                 c='k', 
                                 alpha=0.5
                                 )
-                    plt.errorbar(xpos, np.mean(subR)/scale,
+                    ax.errorbar(xpos, np.mean(subR)/scale,
                                     fmt='o', color="blue",
                                     yerr=np.std(subR)/scale,
                                     ecolor='red',
@@ -204,23 +217,27 @@ class SingleR_TB_Plot():
                 else:
                     pass
             else:
-                plt.scatter(x, np.array(subR)/scale, marker='*', 
-                            c='k', 
-                            alpha=0.5
-                            )
-                plt.errorbar(xpos, np.mean(subR)/scale,
+                if p=="More":
+                    pass
+                else:
+                    ax.errorbar(xpos, np.mean(subR)/scale,
                                 fmt='o', color="blue",
                                 yerr=np.std(subR)/scale,
                                 ecolor='red',
                                 capsize=4, elinewidth=2
                                 )
+                ax.scatter(x, np.array(subR)/scale, marker='*', 
+                            c='k', 
+                            alpha=0.5
+                            )
+                
 
             xpos_list.append(xpos)
             xpos = xpos+1
             maximum, minimum = self._BoundarySet(data=subR, Bound=(maximum, minimum))
             
-            plt.vlines(x=xpos-0.5, 
-                       ymin=(minimum-scale*10)/scale, ymax=(maximum+scale*10)/scale, 
+            ax.vlines(x=xpos-0.5, 
+                       ymin=0, ymax=(maximum+scale*10)/scale, 
                        color=color[-1]
                        )
 
@@ -235,20 +252,24 @@ class SingleR_TB_Plot():
         # plt.xlim(xpos_list[np.min(INstdpos)]-0.5, xpos_list[np.max(INstdpos)]-0.5)
         plt.xlim(-0.5, xpos-0.5)
 
-        plt.ylabel("Resistance (MΩ)")
+        self._LabelSet(rescale=scale)
 
         plt.grid("--", axis='y')
 
-        if p:
+        if p=="True":
             plt.savefig("case_R_Result.png",
                         transparent=True
                         )
+        elif p=="More":
+            pass
+
         else:
             plt.show()
         # =====
         LABELoutput  = (xlabel, xpos_list)
         RESULToutput = data_RList
         # =====
+        return ax
 
 class MultiR_TB_Plot_Angle():
     def __init__(self, Rtot:int, DataPath="Temperature_Rparse"):
@@ -376,6 +397,18 @@ class MultiR_TB_Plot_Angle():
 
         return maximum, minimum, xpos, xpos_list
 
+    def _LabelSet(self, ax, rescale):
+        match rescale:
+            case 1e6:
+                ax.set_ylabel(r"Resistance (M$\Omega$)", fontsize=14)
+            
+            case 1e3:
+                ax.set_ylabel(r"Resistance (k$\Omega$)", fontsize=14)
+            case 1:
+                ax.set_ylabel(r"Resistance ($\Omega$)", fontsize=14)
+            case _:
+                ax.set_ylabel("NO Support This Rescale", fontsize=18)
+
     def casePlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), p=False):
         maximum = maxminBound[0]
         minimum = maxminBound[1]
@@ -408,7 +441,7 @@ class MultiR_TB_Plot_Angle():
         plt.ylim(
             (minimum-0.5*scale)/scale, (maximum+0.5*scale)/scale
             )
-        plt.ylabel("Resistance (MΩ)")
+        self._LabelSet(ax, rescale=rescale)
         plt.grid("--", axis='y')
         plt.legend(loc='best')
 
@@ -425,6 +458,16 @@ class MultiR_TB_Plot_Rtot():
         self.DataPath = DataPath
         self.RtotList = RtotList
         self.AngleSet = AngleSet
+
+        AngleDict = {}
+        for N in RtotList:
+            targetPathList = []
+            path = os.listdir(f"{DataPath}/{N}_Ntot")
+            for p in path:
+                if p[-4:] == ".dat":
+                    targetPathList.append(p)
+            AngleDict[f"{N}_Ntot"]=targetPathList
+        self.AngleDict = AngleDict
 
     def _LoadData(self, Rtot, DataPath):
 
@@ -499,6 +542,18 @@ class MultiR_TB_Plot_Rtot():
 
         return maximum, minimum, xpos, xpos_list
     
+    def _LabelSet(self, ax, rescale):
+        match rescale:
+            case 1e6:
+                ax.set_ylabel(r"Resistance (M$\Omega$)", fontsize=14)
+            
+            case 1e3:
+                ax.set_ylabel(r"Resistance (k$\Omega$)", fontsize=14)
+            case 1:
+                ax.set_ylabel(r"Resistance ($\Omega$)", fontsize=14)
+            case _:
+                ax.set_ylabel("NO Support This Rescale", fontsize=18)
+
     def _NormalDisMask(self, Ntot, stdNum=3):
         def GaussionFit(x0, y0, fitt):
             def fit_function(x, A, mu, sigma):
@@ -548,7 +603,10 @@ class MultiR_TB_Plot_Rtot():
         ax = plt.subplot(111)
         
         for i, Rtot in enumerate(RtotList):
-            data_caseList, data_RList = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+            if len(AngleSet)==3:
+                data_caseList, data_RList = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+            else:
+                data_caseList, data_RList = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[i][0]}_{AngleSet[i][1]}_{AngleSet[i][2]}.dat")
 
             maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
                                                               color=color[i], label=f"Rtot={Rtot}",
@@ -568,7 +626,7 @@ class MultiR_TB_Plot_Rtot():
 
         plt.xlim(-0.5, xpos-0.5)
 
-        plt.ylabel("Resistance (MΩ)")
+        self._LabelSet(ax, rescale=rescale)
 
         plt.grid("--", axis='y')
         plt.show()
@@ -590,21 +648,95 @@ class MultiR_TB_Plot_Rtot():
         
         xlabel = []
         for i, Rtot in enumerate(RtotList):
-            data_caseList, data_RList_sep = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+            if len(AngleSet)==3:
+                data_caseList, data_RList_sep = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}.dat")
+            else:
+                data_caseList, data_RList_sep = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{AngleSet[i][0]}_{AngleSet[i][1]}_{AngleSet[i][2]}.dat")
+            
             data_RList = []
             for data in data_RList_sep:
                 data_RList = data_RList+data
             data_RList = [data_RList]
-            maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
-                                                              color=color[i], label=f"Rtot={Rtot}",
-                                                              scale=rescale, 
-                                                              maxminBound=(maximum, minimum)
-                                                              )
+            if len(AngleSet)==3:
+                maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
+                                                                color=color[i], label=f"Rtot={Rtot}: {AngleSet[0]}_{AngleSet[1]}_{AngleSet[2]}",
+                                                                scale=rescale, 
+                                                                maxminBound=(maximum, minimum)
+                                                                )
+            else:
+                maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=i,
+                                                                color=color[i], label=f"Rtot={Rtot}: {AngleSet[i][0]}_{AngleSet[i][1]}_{AngleSet[i][2]}",
+                                                                scale=rescale, 
+                                                                maxminBound=(maximum, minimum)
+                                                                )
+
             xlabel.append(f"{Rtot}Rtot")
         xpos_list = np.linspace(0, len(xlabel)-1, len(xlabel))
 
         plt.xticks(ticks=xpos_list,
                     labels=xlabel)
-
+        self._LabelSet(ax, rescale=rescale)
         plt.grid("--", axis='y')
         plt.show()
+
+    def Rtot_AnglePlot(self, rescale=1e6, maxminBound=(-1e10, 1e10), p=False, colorB="Case"):
+        maximum = maxminBound[0]
+        minimum = maxminBound[1]
+        scale   = rescale
+
+        RtotList = self.RtotList
+        DataPath = self.DataPath
+        AngleSet = self.AngleDict
+        
+        # ==========
+
+        plt.figure(figsize=(8, 6))
+        plt.rcParams['ytick.direction']='in'
+        ax = plt.subplot(111)
+        
+        xlabel = []
+        xpos_list = []
+        pos = 0
+        for j, Rtot in enumerate(RtotList):
+            AngleDat = AngleSet[f"{Rtot}_Ntot"]
+            for i, angle in enumerate(AngleDat):
+                data_caseList, data_RList_sep = self._LoadData(Rtot=Rtot, DataPath=f"{DataPath}/{Rtot}_Ntot/{angle}")
+            
+                data_RList = []
+                for data in data_RList_sep:
+                    data_RList = data_RList+data
+                data_RList = [data_RList]
+                if colorB == "Case":
+                    c = color[j]
+                    l = None
+                elif colorB == "Angle":
+                    c = color[i]
+                    l = fr"$\gamma$L={angle[0:2]}"
+            
+                if j == 0:
+                    maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=pos,
+                                                                    color=c, 
+                                                                    label=l,
+                                                                    scale=rescale, 
+                                                                    maxminBound=(maximum, minimum)
+                                                                    )
+                else:
+                    maximum, minimum, xposR, xpos_listR = self._RPlot(ax, data_RList, start=pos,
+                                                                    color=c, 
+                                                                    label=None,
+                                                                    scale=rescale, 
+                                                                    maxminBound=(maximum, minimum)
+                                                                    )
+                if i==len(AngleDat)-1:
+                    pass
+                else:
+                    pos+=1
+
+            xlabel.append(f"{Rtot}Rtot")
+            xpos_list.append(pos)
+
+        plt.xticks(ticks=xpos_list,
+                   labels=xlabel)              
+        self._LabelSet(ax, rescale=rescale)
+        plt.grid("--")
+        # plt.show()
