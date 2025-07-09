@@ -26,7 +26,8 @@ class TwoDomain():
     def Plot_totMH(self, xlim, fig=True,
                    posGrid=((1,1), (0, 0), 1, 1), 
                    width=3, 
-                   wordsize=12):
+                   wordsize=12,
+                   save=[False, ]):
         m_tot = self.m_tot
         B_ext = self.B_ext
         # =====
@@ -55,6 +56,14 @@ class TwoDomain():
         ax.tick_params(axis='both', labelsize=(wordsize-2))
         ax.grid("--")
         plt.tight_layout()
+        
+        if save[0]:
+            plt.savefig(save[1], 
+                        transparent=True
+                        )
+        else:
+            pass
+        
         if fig:
             plt.show()
         else:
@@ -142,7 +151,7 @@ class TwoDomain():
         ax = self.Plot_totMH(xlim=xlim,
                              posGrid=((2,8), (0, 0), 1, 7), fig=False, 
                              width=5, 
-                             wordsize=18
+                             wordsize=18, save=[False, ]
                              )
         # =====
         cutPointx  = []
@@ -249,7 +258,8 @@ class ThreeDomain():
     def Plot_totMH(self, xlim, fig=True,
                    posGrid=((1,1), (0, 0), 1, 1), 
                    width=3, 
-                   wordsize=12):
+                   wordsize=12,
+                   save=[False, ]):
         
         m_tot = self.m_tot
         B_ext = self.B_ext
@@ -280,6 +290,14 @@ class ThreeDomain():
         ax.tick_params(axis='both', labelsize=(wordsize-2))
         ax.grid("--")
         plt.tight_layout()
+        
+        if save[0]:
+            plt.savefig(save[1], 
+                        transparent=True
+                        )
+        else:
+            pass
+        
         if fig:
             plt.show()
         else:
@@ -371,7 +389,7 @@ class ThreeDomain():
         ax = self.Plot_totMH(xlim=xlim,
                              posGrid=((2,8), (0, 0), 1, 7), fig=False, 
                              width=5, 
-                             wordsize=18
+                             wordsize=18, save=[False,]
                              )
         # =====
         cutPointx  = []
@@ -489,7 +507,8 @@ class FourDomain():
     def Plot_totMH(self, xlim, fig=True,
                 posGrid=((1,1), (0, 0), 1, 1), 
                 width=3, 
-                wordsize=12):
+                wordsize=12,
+                save=[False,]):
         
         m_tot = self.m_tot
         B_ext = self.B_ext
@@ -520,6 +539,12 @@ class FourDomain():
         ax.tick_params(axis='both', labelsize=(wordsize-2))
         ax.grid("--")
         plt.tight_layout()
+        if save[0]:
+            plt.savefig(save[1], 
+                        transparent=True
+                        )
+        else:
+            pass
         if fig:
             plt.show()
         else:
@@ -615,7 +640,7 @@ class FourDomain():
         ax = self.Plot_totMH(xlim=xlim,
                             posGrid=((2,8), (0, 0), 1, 7), fig=False, 
                             width=5, 
-                            wordsize=18
+                            wordsize=18, save=[False,]
                             )
         # =====
         cutPointx  = []
