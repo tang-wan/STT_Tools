@@ -77,15 +77,15 @@ class DataLoad():
                 data = dataDict[Cal][start+i]
                 mx, my, mz = data
 
-                theta  = np.arctan((np.sqrt(mx**2+my**2))/mz)*180/np.pi
+                theta  = np.arctan((np.sqrt(mx**2+my**2))/abs(mz))*(180/np.pi)
                 if mx>0 and mz>0:
                     theta = theta
                 elif mx>0 and mz<0:
-                    theta = 180 + theta
+                    theta = 180 - theta
                 elif mx<0 and mz>0:
                     theta = -theta
                 elif mx<0 and mz<0:
-                    theta = theta
+                    theta = -180 + theta
                 elif mx==0 and mz<0:
                     theta = 180
                 elif mx==0 and mz>0:
