@@ -319,7 +319,7 @@ class ThreeDomain():
         else:
             pass
         
-        return ax, ylimArray[0], ylimArray[1]ylimArray
+        return ax, ylimArray[0], ylimArray[1]
     
     def Plot_Arrow(self, datax, datay, dataz, FirstIgnore,
                    fig=True, 
