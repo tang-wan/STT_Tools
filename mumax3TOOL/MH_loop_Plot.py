@@ -31,7 +31,7 @@ class TwoDomain():
         self.SecondNum  = SecondNum
         self.N_num = FirstNum + SecondNum
 
-    def Plot_totMH(self, xlim, fig=True,
+    def Plot_totMH(self, xlim, ylim, fig=True,
                    posGrid=((1,1), (0, 0), 1, 1), 
                    width=3, 
                    wordsize=12,
@@ -57,7 +57,10 @@ class TwoDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ylimArray = ax.set_ylim()
+        if ylim==False:
+            ylimArray = ax.set_ylim()
+        else:
+            ylimArray = ax.set_ylim(ylim[0], ylim[1])
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
                 fontsize=wordsize-4)
@@ -271,7 +274,7 @@ class ThreeDomain():
         self.ThirdNum = ThirdNum
         self.N_num = FirstNum + SecondNum + ThirdNum
 
-    def Plot_totMH(self, xlim, fig=True,
+    def Plot_totMH(self, xlim, ylim, fig=True,
                    posGrid=((1,1), (0, 0), 1, 1), 
                    width=3, 
                    wordsize=12,
@@ -298,7 +301,10 @@ class ThreeDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ylimArray = ax.set_ylim()
+        if ylim==False:
+            ylimArray = ax.set_ylim()
+        else:
+            ylimArray = ax.set_ylim(ylim[0], ylim[1])
 
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
@@ -528,7 +534,7 @@ class FourDomain():
         self.FourNum = FourNum
         self.N_num = FirstNum + SecondNum + ThirdNum + FourNum
 
-    def Plot_totMH(self, xlim, fig=True,
+    def Plot_totMH(self, xlim, ylim, fig=True,
                    posGrid=((1,1), (0, 0), 1, 1), 
                    width=3, 
                    wordsize=12,
@@ -555,7 +561,10 @@ class FourDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ylimArray = ax.set_ylim()
+        if ylim==False:
+            ylimArray = ax.set_ylim()
+        else:
+            ylimArray = ax.set_ylim(ylim[0], ylim[1])
 
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
