@@ -57,10 +57,7 @@ class TwoDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ax.set_ylim(
-                     np.min(m_tot[:,0])+np.min(m_tot[:,0])*0.2, 
-                     np.max(m_tot[:,0])+np.max(m_tot[:,0])*0.2
-                    )
+        ylimArray = ax.set_ylim()
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
                 fontsize=wordsize-4)
@@ -80,7 +77,7 @@ class TwoDomain():
         else:
             pass
         
-        return ax
+        return ax, ylimArray[0], ylimArray[1]
     
     def Plot_Arrow(self, datax, datay, dataz, FirstIgnore,
                    fig=True, 
@@ -301,10 +298,7 @@ class ThreeDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ax.set_ylim(
-                     np.min(m_tot[:,0])+np.min(m_tot[:,0])*0.2, 
-                     np.max(m_tot[:,0])+np.max(m_tot[:,0])*0.2
-                    )
+        ylimArray = ax.set_ylim()
 
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
@@ -325,7 +319,7 @@ class ThreeDomain():
         else:
             pass
         
-        return ax
+        return ax, ylimArray[0], ylimArray[1]ylimArray
     
     def Plot_Arrow(self, datax, datay, dataz, FirstIgnore,
                    fig=True, 
@@ -561,10 +555,7 @@ class FourDomain():
         ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
-        ax.set_ylim(
-                    np.min(m_tot[:,0])+np.min(m_tot[:,0])*0.2, 
-                    np.max(m_tot[:,0])+np.max(m_tot[:,0])*0.2
-                    )
+        ylimArray = ax.set_ylim()
 
         ax.legend(ncol=2, 
                 bbox_to_anchor=(0.985, 0.05), loc=4, borderaxespad=0,
@@ -583,7 +574,7 @@ class FourDomain():
         else:
             pass
         
-        return ax
+        return ax, ylimArray[0], ylimArray[1]
     
     def Plot_Arrow(self, datax, datay, dataz, FirstIgnore,
                 fig=True, 
