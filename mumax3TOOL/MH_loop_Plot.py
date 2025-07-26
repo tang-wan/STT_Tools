@@ -49,12 +49,12 @@ class TwoDomain():
         ax = plt.subplot2grid(posGrid[0], posGrid[1], 
                               rowspan=posGrid[2], colspan=posGrid[3]
                               )
-        ax.plot(B_ext[:,0], m_tot[:,dirInd], 
-                label=f"Mtot (dir)", 
+        ax.plot(B_ext[:,dirInd], m_tot[:,dirInd], 
+                label="Mtot", 
                 color='k',
                 linewidth=width
                 )
-        ax.set_xlabel(r"$B_{ext, x}$ (T)", fontsize=wordsize)
+        ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
         ax.set_ylim(
@@ -293,12 +293,12 @@ class ThreeDomain():
         ax = plt.subplot2grid(posGrid[0], posGrid[1], 
                               rowspan=posGrid[2], colspan=posGrid[3]
                               )
-        ax.plot(B_ext[:,0], m_tot[:,0], 
+        ax.plot(B_ext[:,dirInd], m_tot[:,dirInd], 
                 label="Mtot", 
                 color='k',
                 linewidth=width
                 )
-        ax.set_xlabel(r"$B_{ext, x}$ (T)", fontsize=wordsize)
+        ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
         ax.set_ylim(
@@ -546,14 +546,6 @@ class FourDomain():
         dir    = self.dir
         dirInd = self.dirInd
         # =====
-        match dir:
-            case "x":
-                dirInd = 0
-            case "y":
-                dirInd = 1
-            case "z":
-                dirInd = 2
-        # =====
         if fig:
             plt.figure(figsize=(4, 3))
         else:
@@ -561,12 +553,12 @@ class FourDomain():
         ax = plt.subplot2grid(posGrid[0], posGrid[1], 
                             rowspan=posGrid[2], colspan=posGrid[3]
                             )
-        ax.plot(B_ext[:,0], m_tot[:,0], 
+        ax.plot(B_ext[:,dirInd], m_tot[:,dirInd], 
                 label="Mtot", 
                 color='k',
                 linewidth=width
                 )
-        ax.set_xlabel(r"$B_{ext, x}$ (T)", fontsize=wordsize)
+        ax.set_xlabel(r"$B_{ext}$ (T)", fontsize=wordsize)
         ax.set_ylabel("Magnetization (A/m)", fontsize=wordsize)
         ax.set_xlim(xlim[0], xlim[1])
         ax.set_ylim(
