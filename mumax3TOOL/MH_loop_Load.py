@@ -104,10 +104,25 @@ class DataLoad():
             BextDict[str(Barray[BextInd])] = {'Car_r': Car_r_array,
                                               'theta': theta_array, 
                                               'phi': phi_array}
-            # print(theta_array)
+            self.BextDict = BextDict
         return BextDict
             
+    # def BextAngle(self):
+    #     AngleResult = self.BextDict
+    #     KeyList = list(AngleResult.keys())
+    #     Bext = np.array([])
+    #     data1 = np.array([])
+    #     data2 = np.array([])
+    #     for key in KeyList[::10]:
+    #         Bext = np.append(Bext, float(key))
+
+    #         Angle = AngleResult[key]["theta"][5]
+    #         data1 = np.append(data1, Angle)
             
+    #         Angle = AngleResult[key]["theta"][6]
+    #         data2 = np.append(data2, Angle)
+
+    #     return 
 
 
     

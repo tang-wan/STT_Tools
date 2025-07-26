@@ -5,14 +5,22 @@ from STT_Tool import Tools
 color = Tools.ColorList()
 
 class TwoDomain():
-    def __init__(self, dataPath, FirstNum, SecondNum, mType='m'):
+    def __init__(self, dataPath, dir, FirstNum, SecondNum, mType='m'):
         
         data = np.loadtxt(dataPath)
         if mType=="m":
             data = data
         elif mType=="M":
             data = np.delete(data, [1, 2, 3], axis=1)
+        
+        if dir == "x":
+            dirInd = 0
+        elif dir == "y":
+            dirInd = 1
+        elif dir == "z":
+            dirInd = 2
 
+        self.dir, self.dirInd = dir, dirInd
         self.time  = data[:,0]
         self.m_tot = data[:,1:4]
         self.B_ext = data[:,4:7]
@@ -31,6 +39,9 @@ class TwoDomain():
         m_tot = self.m_tot
         B_ext = self.B_ext
         # =====
+        dir    = self.dir
+        dirInd = self.dirInd
+        # =====
         if fig:
             plt.figure(figsize=(4, 3))
         else:
@@ -38,8 +49,8 @@ class TwoDomain():
         ax = plt.subplot2grid(posGrid[0], posGrid[1], 
                               rowspan=posGrid[2], colspan=posGrid[3]
                               )
-        ax.plot(B_ext[:,0], m_tot[:,0], 
-                label="Mtot", 
+        ax.plot(B_ext[:,0], m_tot[:,dirInd], 
+                label=f"Mtot (dir)", 
                 color='k',
                 linewidth=width
                 )
@@ -236,23 +247,31 @@ class TwoDomain():
             plt.show()
 
 class ThreeDomain():
-    def __init__(self, dataPath, FirstNum, SecondNum, ThirdNum, mType='m'):
-
+    def __init__(self, dataPath, dir, FirstNum, SecondNum, ThirdNum, mType='m'):
+        
         data = np.loadtxt(dataPath)
         if mType=="m":
             data = data
         elif mType=="M":
             data = np.delete(data, [1, 2, 3], axis=1)
+        
+        if dir == "x":
+            dirInd = 0
+        elif dir == "y":
+            dirInd = 1
+        elif dir == "z":
+            dirInd = 2
 
+        self.dir, self.dirInd = dir, dirInd
         self.time  = data[:,0]
         self.m_tot = data[:,1:4]
         self.B_ext = data[:,4:7]
 
         self.data = data
 
-        self.FirstNum  = FirstNum
-        self.SecondNum = SecondNum
-        self.ThirdNum  = ThirdNum
+        self.FirstNum = FirstNum
+        self.SecondNum  = SecondNum
+        self.ThirdNum = ThirdNum
         self.N_num = FirstNum + SecondNum + ThirdNum
 
     def Plot_totMH(self, xlim, fig=True,
@@ -263,6 +282,9 @@ class ThreeDomain():
         
         m_tot = self.m_tot
         B_ext = self.B_ext
+        # =====
+        dir    = self.dir
+        dirInd = self.dirInd
         # =====
         if fig:
             plt.figure(figsize=(4, 3))
@@ -484,34 +506,53 @@ class ThreeDomain():
             plt.show()
 
 class FourDomain():
-    def __init__(self, dataPath, FirstNum, SecondNum, ThirdNum, FourNum, mType='m'):
-
+    def __init__(self, dataPath, dir, FirstNum, SecondNum, ThirdNum, FourNum, mType='m'):
+        
         data = np.loadtxt(dataPath)
         if mType=="m":
             data = data
         elif mType=="M":
             data = np.delete(data, [1, 2, 3], axis=1)
+        
+        if dir == "x":
+            dirInd = 0
+        elif dir == "y":
+            dirInd = 1
+        elif dir == "z":
+            dirInd = 2
 
+        self.dir, self.dirInd = dir, dirInd
         self.time  = data[:,0]
         self.m_tot = data[:,1:4]
         self.B_ext = data[:,4:7]
 
         self.data = data
 
-        self.FirstNum  = FirstNum
-        self.SecondNum = SecondNum
-        self.ThirdNum  = ThirdNum
-        self.FourNum   = FourNum
+        self.FirstNum = FirstNum
+        self.SecondNum  = SecondNum
+        self.ThirdNum = ThirdNum
+        self.FourNum = FourNum
         self.N_num = FirstNum + SecondNum + ThirdNum + FourNum
 
     def Plot_totMH(self, xlim, fig=True,
-                posGrid=((1,1), (0, 0), 1, 1), 
-                width=3, 
-                wordsize=12,
-                save=[False,]):
+                   posGrid=((1,1), (0, 0), 1, 1), 
+                   width=3, 
+                   wordsize=12,
+                   save=[False, ]):
         
         m_tot = self.m_tot
         B_ext = self.B_ext
+        # =====
+        dir    = self.dir
+        dirInd = self.dirInd
+        # =====
+        match dir:
+            case "x":
+                dirInd = 0
+            case "y":
+                dirInd = 1
+            case "z":
+                dirInd = 2
         # =====
         if fig:
             plt.figure(figsize=(4, 3))
